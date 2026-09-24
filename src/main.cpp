@@ -3,23 +3,23 @@
 #include <bn_keypad.h>
 #include <bn_sprite_ptr.h>
 
-#include "bn_sprite_items_dot.h"
+#include "bn_sprite_items_bun.h"
 
-#define FLOOR (80 - 4)
+#define FLOOR (80 - 8)
 
 int main() {
     bn::core::init();
 
     bn::backdrop::set_color(bn::color(15, 0, 0));
 
-    auto dot = bn::sprite_items::dot.create_sprite(0, 0);
+    auto dot = bn::sprite_items::bun.create_sprite(0, 0);
 
     bn::fixed speed = 1.5;
 
     bn::fixed dy = 0;
     bn::fixed gravity = .03;
 
-    bn::fixed jump_strength = 1;
+    bn::fixed jump_strength = 1.3;
 
     while(true) {
         if(bn::keypad::left_held()) {
