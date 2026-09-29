@@ -17,7 +17,7 @@ int main() {
     bn::fixed speed = 1.5;
 
     bn::fixed dy = 0;
-    bn::fixed gravity = .03;
+    bn::fixed gravity = 0.5;
 
     bn::fixed jump_strength = 1.3;
 
@@ -36,7 +36,7 @@ int main() {
             charge = 0;
         }
         if(bn::keypad::a_held() && isCharging){
-            charge += 0.5;
+            charge += 0.3;
         }
         if(bn::keypad::a_released() && isCharging){
             isCharging = false;
