@@ -28,8 +28,24 @@ int main() {
         if(bn::keypad::right_held()) {
             dot.set_x(dot.x() + speed);
         }
-        if(bn::keypad::a_pressed()) {
+
+        bool isCharging = true;
+        double charge;
+        if(bn::keypad::a_held() && !isCharging){
+            isCharging = true;
+            charge = 0;
+        }
+        if(bn::keypad::a_held() && isCharging){
+            charge += 0.5;
+        }
+        if(bn::keypad::a_released() && isCharging){
+            isCharging = false;
+            jump_strength = charge;
             dy -= jump_strength;
+        }
+        else if (bn::keypad::a_pressed()) {
+            isCharging = false;
+            dy -= jump_strength;    
         }
 
         dy += gravity;
@@ -41,5 +57,8 @@ int main() {
             dy = 0;
         }
         bn::core::update();
+
+      
+
     }
 }
